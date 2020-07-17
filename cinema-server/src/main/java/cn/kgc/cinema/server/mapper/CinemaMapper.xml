@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.kgc.cinema.server.mapper.CinemaMapper">
+
+    <select id="selectAllCinemas" resultType="Cinema">
+        SELECT * FROM cinema
+    </select>
+
+    <insert id="insertOneCinema" parameterType="Cinema">
+        insert into cinema(name) values(#{name})
+    </insert>
+
+    <update id="updateOneCinema" parameterType="Cinema">
+        update cinema set name = #{name} where id = #{id}
+    </update>
+
+    <delete id="deleteOneCinema" parameterType="integer">
+        delete from cinema where id = #{cinemaId}
+    </delete>
+
+</mapper>

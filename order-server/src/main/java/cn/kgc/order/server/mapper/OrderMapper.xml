@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kgc.order.server.mapper.OrderMapper">
+
+    <insert id="insertOneOrder" parameterType="Order">
+        INSERT INTO `order`(user_id, site_id, seat_number, order_time) VALUES
+        <foreach collection="seatNumber" item="i" separator=",">
+           ( #{userId}, #{siteId}, #{i}, CURRENT_TIMESTAMP())
+        </foreach>
+    </insert>
+    <select id="selectSeatNumbersBySite" resultType="String">
+        SELECT seat_number seatNumbers FROM `order` where site_id = #{siteId};
+    </select>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kgc.user.server.mapper.UserMapper">
+
+    <select id="selectAllUsers" resultType="User">
+        select * from user
+    </select>
+
+    <select id="selectUserByUsername" parameterType="string" resultType="User">
+        select * from user where username = #{username}
+    </select>
+
+    <insert id="insertOneUser" parameterType="User">
+        insert into user (username,password) values(#{username},#{password})
+    </insert>
+
+    <update id="updateOneUser" parameterType="User">
+        update user set password = #{password} where id = #{id}
+    </update>
+
+    <delete id="deleteOneUser" parameterType="integer">
+        delete from user where id = #{userId}
+    </delete>
+
+</mapper>

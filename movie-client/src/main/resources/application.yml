@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: movie-client
+  freemarker:
+    cache: false
+    suffix: .ftl
+    content-type: text/html
+    charset: UTF-8
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd
+    default-property-inclusion: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+#\u81EA\u5B9A\u4E49\u53D8\u91CF
+article:
+  page:
+    size: 8
+
+comment:
+  page:
+    size: 5
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kgc.cinema.server.mapper.HallMapper">
+
+    <select id="selectHallByCinemaId" parameterType="integer" resultType="Hall">
+        SELECT id,name,cinema_id cinemaId from video_hall WHERE cinema_id = #{cinemaId}
+    </select>
+
+    <insert id="insertOneHall" parameterType="Hall">
+        insert into video_hall(name,cinema_id) values (#{name},#{cinemaId})
+    </insert>
+
+    <update id="updateOneHall" parameterType="Hall">
+        update video_hall set name = #{name},cinema_id = #{cinemaId} where id = #{id}
+    </update>
+
+   <delete id="deleteOneHall" parameterType="integer">
+       delete from video_hall where id = #{hallId}
+   </delete>
+
+</mapper>

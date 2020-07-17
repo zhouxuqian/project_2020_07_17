@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.kgc.movie.server.mapper.MovieMapper">
+
+    <select id="selectMovieByHallId" resultType="Movie">
+        SELECT
+        b.name name,
+        b.brief_introduction briefIntroduction,
+        b.protagonist protagonist,
+        c.name categoryName,
+        d.id siteId,
+        d.price price,
+        d.show_time showTime
+        from movie_category_middle a
+        join movie b on a.movie_id=b.id
+        join category c on a.category_id=c.id
+        join site d on a.movie_id=d.movie_id
+        WHERE d.video_hall_id = #{hallId} and  DATE_FORMAT(d.show_time,'%Y-%m-%d') = #{showTime}
+        limit #{start},#{length};
+    </select>
+
+    <select id="selectMoviceCountByHallId" resultType="Integer">
+        SELECT
+        count(1)
+        from movie_category_middle a
+        join movie b on a.movie_id=b.id
+        join category c on a.category_id=c.id
+        join site d on a.movie_id=d.movie_id
+        WHERE d.video_hall_id = #{hallId} and  DATE_FORMAT(d.show_time,'%Y-%m-%d') = #{showTime};
+    </select>
+
+</mapper>

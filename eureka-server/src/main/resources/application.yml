@@ -1,0 +1,11 @@
+#\u5192\u53F7\u540E\u9762\u6709\u7A7A\u683C
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
